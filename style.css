@@ -98,11 +98,13 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 4rem;
     transition: transform 0.5s, box-shadow 0.5s;
     cursor: pointer;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    
+
+.photo-card img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -390,4 +392,5 @@ h1 {
     .cake { font-size: 5rem; }
 
 }
+
 
