@@ -126,6 +126,7 @@ h1 {
     background: linear-gradient(135deg, rgba(255, 107, 157, 0.3), rgba(192, 108, 132, 0.3));
     opacity: 0;
     transition: opacity 0.5s;
+    pointer-events: none; 
 }
 
 .photo-card:hover::before {
@@ -390,6 +391,7 @@ h1 {
     .cake { font-size: 5rem; }
 
 }
+
 
 
 
