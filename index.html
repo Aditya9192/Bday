@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="gradient-bg"></div>
+    
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h1>Happy Birthday</h1>
+            <div class="name"> Bhaktu 💕</div>
+            <div class="heart-burst">💗✨💗</div>
+        </div>
+
+       <!-- Photo Gallery -->
+<div class="photo-grid">
+    <div class="photo-card" style="background-image: url('image/1.jpeg'); background-size: cover; background-position: center;" onclick="openLightbox('image/1.jpeg')"></div>
+    <div class="photo-card" style="background-image: url('image/2.jpeg'); background-size: cover; background-position: center;" onclick="openLightbox('image/2.jpeg')"></div>
+    <div class="photo-card" style="background-image: url('image/3.jpeg'); background-size: cover; background-position: center;" onclick="openLightbox('image/3.jpeg')"></div>
+    <div class="photo-card" style="background-image: url('image/4.jpeg'); background-size: cover; background-position: center;" onclick="openLightbox('image/4.jpeg')"></div>
+</div>
+
+<!-- Lightbox Modal -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="close-btn">&times;</span>
+    <img class="lightbox-image" id="lightbox-img" src="" alt="Photo">
+    <div class="lightbox-caption">Click anywhere to close</div>
+</div>
+
+        <!-- Message Section -->
+        <div class="message-section">
+            <p class="message">
+                Today is <strong>YOUR day</strong>, the day when the most beautiful soul came into this world.
+                <br><br>
+                You are my <strong>sunshine</strong> on cloudy days, my <strong>peace</strong> in chaos, 
+                and my <strong>happiness</strong> in every moment.
+                <br><br>
+                Every laugh we share, every memory we create, and every dream we chase together 
+                makes my life infinitely more beautiful.
+                <br><br>
+                I promise to love you more with each passing day, to support your dreams, 
+                and to be your partner through all of life's adventures.
+            </p>
+        </div>
+
+        <!-- Timeline Memories -->
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-title">💫 First Moment</div>
+                <div class="timeline-content">
+                    The day I met you, my life changed forever. Your smile lit up my world.
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-title">❤️ Falling Deeper</div>
+                <div class="timeline-content">
+                    Every conversation, every shared moment made me fall more in love with you.
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-title">🌟 Forever Together</div>
+                <div class="timeline-content">
+                    Here's to our future - filled with love, laughter, and endless adventures together.
+                </div>
+            </div>
+        </div>
+
+        <!-- Cake Section -->
+        <div class="cake-section">
+            <div class="cake">🎂</div>
+            <div class="wish-text">Make a wish, my love! 💘✨</div>
+        </div>
+    </div>
+
+    <!-- Music Control -->
+    <button class="music-control" onclick="toggleMusic()">🎵</button>
+
+    <script src="script.js"></script>
+</body>
+</html>

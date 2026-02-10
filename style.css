@@ -1,0 +1,384 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Playfair Display', serif;
+    overflow-x: hidden;
+    background: #0a0a0a;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Animated gradient background */
+.gradient-bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ff6b9d, #c06c84, #6c5ce7, #a29bfe);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    opacity: 0.9;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Glass morphism container */
+.container {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.hero-section {
+    text-align: center;
+    margin-bottom: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    padding: 60px 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    font-size: 5rem;
+    background: linear-gradient(135deg, #ffd700, #ffed4e, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    animation: shimmer 3s infinite;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+@keyframes shimmer {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.3); }
+}
+
+.name {
+    font-size: 4rem;
+    color: #fff;
+    text-shadow: 0 0 40px rgba(255, 107, 157, 0.8),
+                 0 0 80px rgba(255, 107, 157, 0.5);
+    margin-bottom: 30px;
+    animation: glow 2s infinite alternate;
+    font-style: italic;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 40px rgba(255, 107, 157, 0.8); }
+    to { text-shadow: 0 0 60px rgba(255, 107, 157, 1), 0 0 100px rgba(255, 107, 157, 0.8); }
+}
+
+/* Image gallery */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin: 50px 0;
+}
+
+.photo-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    transition: transform 0.5s, box-shadow 0.5s;
+    cursor: pointer;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.photo-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 60px rgba(255, 107, 157, 0.5);
+}
+
+.photo-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 107, 157, 0.3), rgba(192, 108, 132, 0.3));
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.photo-card:hover::before {
+    opacity: 1;
+}
+
+.message-section {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    padding: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 40px 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.message {
+    font-size: 1.6rem;
+    color: #fff;
+    line-height: 2;
+    text-align: center;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    font-weight: 300;
+}
+
+.message strong {
+    color: #ffd700;
+    font-weight: 600;
+}
+
+/* Lightbox styles */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox-image {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 20px;
+    box-shadow: 0 0 50px rgba(255, 107, 157, 0.5);
+    animation: zoomIn 0.4s ease;
+    object-fit: contain;
+}
+
+.close-btn {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    font-size: 4rem;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 10000;
+}
+
+.close-btn:hover {
+    color: #ff6b9d;
+    transform: rotate(90deg);
+}
+
+.lightbox-caption {
+    position: absolute;
+    bottom: 30px;
+    color: #fff;
+    font-size: 1.2rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+    from { 
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to { 
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Decorative elements */
+.heart-burst {
+    text-align: center;
+    font-size: 6rem;
+    margin: 40px 0;
+    animation: heartPulse 1.5s infinite;
+}
+
+@keyframes heartPulse {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(255, 107, 157, 0.8)); }
+    50% { transform: scale(1.15); filter: drop-shadow(0 0 40px rgba(255, 107, 157, 1)); }
+}
+
+/* Music control */
+.music-control {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff6b9d, #c06c84);
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 10px 40px rgba(255, 107, 157, 0.6);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.music-control:hover {
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0 15px 50px rgba(255, 107, 157, 0.8);
+}
+
+.music-control.playing {
+    animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Floating elements */
+.floating-heart {
+    position: fixed;
+    font-size: 2.5rem;
+    animation: float 10s infinite;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.8; }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.star {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    animation: twinkle 3s infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(0); }
+    50% { opacity: 1; transform: scale(1.5); }
+}
+
+/* Timeline section */
+.timeline {
+    margin: 60px 0;
+}
+
+.timeline-item {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 30px;
+    margin: 20px 0;
+    border-left: 5px solid #ffd700;
+    transition: all 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.timeline-item:hover {
+    transform: translateX(10px);
+    box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3);
+}
+
+.timeline-title {
+    font-size: 1.8rem;
+    color: #ffd700;
+    margin-bottom: 10px;
+}
+
+.timeline-content {
+    font-size: 1.3rem;
+    color: #fff;
+    line-height: 1.8;
+}
+
+.cake-section {
+    text-align: center;
+    margin: 50px 0;
+}
+
+.cake {
+    font-size: 8rem;
+    animation: bounce 2s infinite;
+    filter: drop-shadow(0 10px 30px rgba(255, 215, 0, 0.5));
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
+}
+
+.wish-text {
+    font-size: 2rem;
+    color: #fff;
+    margin-top: 20px;
+    text-shadow: 0 0 20px rgba(255, 107, 157, 0.8);
+    animation: fadeInUp 2s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 3rem; }
+    .name { font-size: 2.5rem; }
+    .message { font-size: 1.2rem; }
+    .hero-section { padding: 40px 20px; }
+    .message-section { padding: 30px 20px; }
+    .photo-grid { grid-template-columns: 1fr; }
+    .cake { font-size: 5rem; }
+}
